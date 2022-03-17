@@ -1,0 +1,86 @@
+ALGORITHM chpt_algo2
+VAR
+    tab1 : ARRAY_OF INTEGER[5];
+    tab2 : ARRAY_OF INTEGER[5];
+    i,j: INTEGER:=0
+    sumS: INTEGER:=0 
+    sumD: INTEGER:=0 
+    diff : boolean
+    hashTable1 : Hashtable
+    hashTable2 : Hashtable
+BEGIN
+tab1 := {1,2,3,5,7,}
+tab2 := {1,4,7,6,0,}
+sumS:=0 
+sumD:=0
+diff := true
+hashTable1.put(1,1)
+hashTable1.put(2,2)
+hashTable1.put(3,3)
+hashTable1.put(4,4)
+hashTable1.put(5,5)
+
+hashTable2.put(1,2)
+hashTable2.put(2,3)
+hashTable2.put(3,4)
+hashTable2.put(4,6)
+hashTable2.put(5,7)
+
+// ** Solutin 1 (by array) **
+
+FOR i FROM 0 TO 4 STEP 1  DO
+    FOR j FROM 0 TO 4 STEP 1  DO    
+        IF (tab1[i]=tab2[j]) THEN
+            sumS:=sumS+2*tab1[i]
+            diff := false
+        END_IF
+    END_FOR
+    If(diff = true)
+        sumD:=sumD+tab1[i]
+    END_IF
+END_FOR
+
+// ** Solutin 2 (by hashtable) **
+
+FOR i FROM 1 TO hashTable1.size() STEP 1  DO
+    FOR j FROM 1 TO hashTable2.size() STEP 1  DO    
+        IF (hashTable1.get(i)=hashTable2.get(j)) THEN
+            sumS:=sumS+2*hashTable1.get(i)
+            diff := false
+        END_IF
+    END_FOR
+    If(diff = true)
+        sumD:=sumD+hashTable1.get(i)
+    END_IF
+END_FOR
+
+Write ("the sum of the same elements");
+    Write (sumS);
+Write ("the sum of the different elements");
+    Write (sumD);
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
